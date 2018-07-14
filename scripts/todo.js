@@ -26,7 +26,7 @@ class TodoApp extends React.Component {
         e(
           "ol",
           null,
-          undefined.state.items.map(function (item) {
+          this.state.items.map(function (item) {
             return e(
               "li",
               { key: item.id },
@@ -43,8 +43,8 @@ class TodoApp extends React.Component {
             );
           })
         )
-      );
-    )
+      )
+    );
   }
 }
 
