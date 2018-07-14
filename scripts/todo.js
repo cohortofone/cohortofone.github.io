@@ -1,3 +1,5 @@
+const e = React.createElement;
+
 class TodoApp extends React.Component {
   constructor(props) {
     super(props)
@@ -13,19 +15,35 @@ class TodoApp extends React.Component {
   
   render() {
     return (
-      <div>
-        <h2>Todos:</h2>
-        <ol>
-        {this.state.items.map(item => (
-          <li key={item.id}>
-            <label>
-              <input type="checkbox" disabled readOnly checked={item.done} /> 
-              <span className={item.done ? "done" : ""}>{item.text}</span>
-            </label>
-          </li>
-        ))}
-        </ol>
-      </div>
+      e(
+        "div",
+        null,
+        e(
+          "h2",
+          null,
+          "Todos:"
+        ),
+        e(
+          "ol",
+          null,
+          undefined.state.items.map(function (item) {
+            return e(
+              "li",
+              { key: item.id },
+              e(
+                "label",
+                null,
+                e("input", { type: "checkbox", disabled: true, readOnly: true, checked: item.done }),
+                e(
+                  "span",
+                  { className: item.done ? "done" : "" },
+                  item.text
+                )
+              )
+            );
+          })
+        )
+      );
     )
   }
 }
